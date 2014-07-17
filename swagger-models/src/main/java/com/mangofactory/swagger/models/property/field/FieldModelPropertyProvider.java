@@ -91,7 +91,7 @@ public class FieldModelPropertyProvider implements ModelPropertyProvider {
     return serializationCandidates;
   }
 
-  private boolean memberIsAField(AnnotatedMember member) {
+  protected boolean memberIsAField(AnnotatedMember member) {
     return member != null
             && member.getMember() != null
             && Field.class.isAssignableFrom(member.getMember().getClass());

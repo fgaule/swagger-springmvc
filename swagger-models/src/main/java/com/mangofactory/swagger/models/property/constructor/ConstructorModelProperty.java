@@ -9,6 +9,7 @@ import com.mangofactory.swagger.models.property.field.FieldModelProperty;
  * @since 17/07/2014
  */
 public class ConstructorModelProperty extends FieldModelProperty {
+
   public ConstructorModelProperty(String name, ResolvedField childField, AlternateTypeProvider alternateTypeProvider) {
     super(name, childField, alternateTypeProvider);
   }

@@ -4,6 +4,7 @@ import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mangofactory.swagger.models.property.ModelProperty;
 import com.mangofactory.swagger.models.property.bean.BeanModelPropertyProvider;
+import com.mangofactory.swagger.models.property.constructor.ConstructorModelPropertyProvider;
 import com.mangofactory.swagger.models.property.field.FieldModelPropertyProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,12 +18,15 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
 
   private final FieldModelPropertyProvider fieldModelPropertyProvider;
   private final BeanModelPropertyProvider beanModelPropertyProvider;
+  private final ConstructorModelPropertyProvider constructorModelPropertyProvider;
 
   @Autowired
   public DefaultModelPropertiesProvider(BeanModelPropertyProvider beanModelPropertyProvider,
-                                        FieldModelPropertyProvider fieldModelPropertyProvider) {
+                                        FieldModelPropertyProvider fieldModelPropertyProvider,
+                                        ConstructorModelPropertyProvider constructorModelPropertyProvider) {
     this.beanModelPropertyProvider = beanModelPropertyProvider;
     this.fieldModelPropertyProvider = fieldModelPropertyProvider;
+    this.constructorModelPropertyProvider = constructorModelPropertyProvider;
   }
 
   @Override
@@ -30,6 +34,7 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
     ArrayList<ModelProperty> modelProperties = newArrayList(fieldModelPropertyProvider.provideSerializableProperties
             (type));
     modelProperties.addAll(beanModelPropertyProvider.provideSerializableProperties(type));
+    modelProperties.addAll(constructorModelPropertyProvider.provideSerializableProperties(type));
     return modelProperties;
   }
 
@@ -40,6 +45,8 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
 
 
     modelProperties.addAll(beanModelPropertyProvider.provideDeserializableProperties(type));
+    modelProperties.addAll(constructorModelPropertyProvider.provideDeserializableProperties(type));
+    
     return modelProperties;
   }
 
