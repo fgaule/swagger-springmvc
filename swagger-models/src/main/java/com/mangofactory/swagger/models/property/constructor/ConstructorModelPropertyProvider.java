@@ -21,18 +21,19 @@ import java.lang.reflect.Constructor;
 public class ConstructorModelPropertyProvider extends FieldModelPropertyProvider implements ModelPropertiesProvider{
 
   @Autowired
-  public ConstructorModelPropertyProvider(ObjectMapper objectMapper, FieldProvider fieldProvider, AlternateTypeProvider alternateTypeProvider) {
+  public ConstructorModelPropertyProvider(ObjectMapper objectMapper, FieldProvider fieldProvider,
+                                          AlternateTypeProvider alternateTypeProvider) {
     super(objectMapper, fieldProvider, alternateTypeProvider);
   }
 
   @Override
   public Iterable<? extends ModelProperty> propertiesForSerialization(ResolvedType type) {
-    return super.provideSerializableProperties(type);
+    return super.propertiesForSerialization(type);
   }
 
   @Override
   public Iterable<? extends ModelProperty> propertiesForDeserialization(ResolvedType type) {
-    return super.provideDeserializableProperties(type);
+    return super.propertiesForDeserialization(type);
   }
 
   @Override

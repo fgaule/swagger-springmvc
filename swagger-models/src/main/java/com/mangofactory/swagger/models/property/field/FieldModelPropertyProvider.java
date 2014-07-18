@@ -13,8 +13,8 @@ import com.google.common.base.Optional;
 import com.google.common.collect.Maps;
 import com.mangofactory.swagger.models.alternates.AlternateTypeProvider;
 import com.mangofactory.swagger.models.property.ModelProperty;
-import com.mangofactory.swagger.models.property.ModelPropertyProvider;
 import com.mangofactory.swagger.models.property.PropertyUtils;
+import com.mangofactory.swagger.models.property.provider.ModelPropertiesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +30,7 @@ import static com.google.common.collect.Maps.*;
  * @since 17/07/2014
  */
 @Component
-public class FieldModelPropertyProvider implements ModelPropertyProvider {
+public class FieldModelPropertyProvider implements ModelPropertiesProvider {
 
   private final FieldProvider fieldProvider;
   private final AlternateTypeProvider alternateTypeProvider;
@@ -45,7 +45,7 @@ public class FieldModelPropertyProvider implements ModelPropertyProvider {
   }
 
   @Override
-  public List<? extends ModelProperty> provideSerializableProperties(ResolvedType resolvedType) {
+  public Iterable<? extends ModelProperty> propertiesForSerialization(ResolvedType resolvedType) {
     List<ModelProperty> serializationCandidates = newArrayList();
     SerializationConfig serializationConfig = objectMapper.getSerializationConfig();
     BeanDescription beanDescription = serializationConfig.introspect(TypeFactory.defaultInstance()
@@ -69,7 +69,7 @@ public class FieldModelPropertyProvider implements ModelPropertyProvider {
   }
 
   @Override
-  public List<? extends ModelProperty> provideDeserializableProperties(ResolvedType resolvedType) {
+  public Iterable<? extends ModelProperty> propertiesForDeserialization(ResolvedType resolvedType) {
     List<ModelProperty> serializationCandidates = newArrayList();
     DeserializationConfig serializationConfig = objectMapper.getDeserializationConfig();
     BeanDescription beanDescription = serializationConfig.introspect(TypeFactory.defaultInstance()
@@ -100,4 +100,5 @@ public class FieldModelPropertyProvider implements ModelPropertyProvider {
   public void setObjectMapper(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
+
 }

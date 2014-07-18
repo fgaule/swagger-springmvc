@@ -2,16 +2,13 @@ package com.mangofactory.swagger.models.property.provider;
 
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Iterables;
 import com.mangofactory.swagger.models.property.ModelProperty;
 import com.mangofactory.swagger.models.property.bean.BeanModelPropertyProvider;
 import com.mangofactory.swagger.models.property.constructor.ConstructorModelPropertyProvider;
 import com.mangofactory.swagger.models.property.field.FieldModelPropertyProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-
-import static com.google.common.collect.Lists.*;
 
 @Component
 public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
@@ -31,23 +28,16 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
 
   @Override
   public Iterable<? extends ModelProperty> propertiesForSerialization(ResolvedType type) {
-    ArrayList<ModelProperty> modelProperties = newArrayList(fieldModelPropertyProvider.provideSerializableProperties
-            (type));
-    modelProperties.addAll(beanModelPropertyProvider.provideSerializableProperties(type));
-    modelProperties.addAll(constructorModelPropertyProvider.provideSerializableProperties(type));
-    return modelProperties;
+    return Iterables.concat(fieldModelPropertyProvider.propertiesForSerialization
+            (type), beanModelPropertyProvider.propertiesForSerialization(type), constructorModelPropertyProvider
+            .propertiesForSerialization(type));
   }
 
   @Override
   public Iterable<? extends ModelProperty> propertiesForDeserialization(ResolvedType type) {
-    ArrayList<ModelProperty> modelProperties = newArrayList(fieldModelPropertyProvider
-            .provideDeserializableProperties(type));
-
-
-    modelProperties.addAll(beanModelPropertyProvider.provideDeserializableProperties(type));
-    modelProperties.addAll(constructorModelPropertyProvider.provideDeserializableProperties(type));
-    
-    return modelProperties;
+    return Iterables.concat(fieldModelPropertyProvider.propertiesForDeserialization
+            (type), beanModelPropertyProvider.propertiesForDeserialization(type), constructorModelPropertyProvider
+            .propertiesForDeserialization(type));
   }
 
   /**
@@ -58,6 +48,7 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
   public void setObjectMapper(ObjectMapper objectMapper) {
     this.beanModelPropertyProvider.setObjectMapper(objectMapper);
     this.fieldModelPropertyProvider.setObjectMapper(objectMapper);
+    this.constructorModelPropertyProvider.setObjectMapper(objectMapper);
   }
 }
 
