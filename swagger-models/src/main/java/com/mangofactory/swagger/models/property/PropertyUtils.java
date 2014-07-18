@@ -34,7 +34,7 @@ public class PropertyUtils {
     return new Predicate<BeanPropertyDefinition>() {
       @Override
       public boolean apply(BeanPropertyDefinition input) {
-        return input.getInternalName() == propertyDefinition.getInternalName();
+        return input.getInternalName().equals(propertyDefinition.getInternalName());
       }
     };
   }

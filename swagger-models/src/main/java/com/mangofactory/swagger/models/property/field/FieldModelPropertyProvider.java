@@ -16,6 +16,7 @@ import com.mangofactory.swagger.models.property.ModelProperty;
 import com.mangofactory.swagger.models.property.PropertyUtils;
 import com.mangofactory.swagger.models.property.provider.ModelPropertiesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -37,7 +38,7 @@ public class FieldModelPropertyProvider implements ModelPropertiesProvider {
   private ObjectMapper objectMapper;
 
   @Autowired
-  public FieldModelPropertyProvider(ObjectMapper objectMapper, FieldProvider fieldProvider,
+  public FieldModelPropertyProvider(@Qualifier("swaggerObjectMapper") ObjectMapper objectMapper, FieldProvider fieldProvider,
                                     AlternateTypeProvider alternateTypeProvider) {
     this.objectMapper = objectMapper;
     this.fieldProvider = fieldProvider;

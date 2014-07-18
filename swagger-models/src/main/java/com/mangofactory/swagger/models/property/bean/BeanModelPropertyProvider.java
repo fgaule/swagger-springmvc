@@ -18,6 +18,7 @@ import com.mangofactory.swagger.models.property.provider.ModelPropertiesProvider
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -42,7 +43,8 @@ public class BeanModelPropertyProvider implements ModelPropertiesProvider {
   private final AlternateTypeProvider alternateTypeProvider;
 
   @Autowired
-  public BeanModelPropertyProvider(ObjectMapper objectMapper, AccessorsProvider accessors, TypeResolver typeResolver,
+  public BeanModelPropertyProvider(@Qualifier("swaggerObjectMapper") ObjectMapper objectMapper,
+                                   AccessorsProvider  accessors, TypeResolver typeResolver,
                                    AlternateTypeProvider alternateTypeProvider) {
     this.objectMapper = objectMapper;
     this.typeResolver = typeResolver;

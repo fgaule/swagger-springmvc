@@ -9,6 +9,7 @@ import com.mangofactory.swagger.models.property.field.FieldModelPropertyProvider
 import com.mangofactory.swagger.models.property.field.FieldProvider;
 import com.mangofactory.swagger.models.property.provider.ModelPropertiesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Constructor;
@@ -21,8 +22,8 @@ import java.lang.reflect.Constructor;
 public class ConstructorModelPropertyProvider extends FieldModelPropertyProvider implements ModelPropertiesProvider{
 
   @Autowired
-  public ConstructorModelPropertyProvider(ObjectMapper objectMapper, FieldProvider fieldProvider,
-                                          AlternateTypeProvider alternateTypeProvider) {
+  public ConstructorModelPropertyProvider(@Qualifier("swaggerObjectMapper") ObjectMapper objectMapper,
+                                          FieldProvider fieldProvider, AlternateTypeProvider alternateTypeProvider) {
     super(objectMapper, fieldProvider, alternateTypeProvider);
   }
 
