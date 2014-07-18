@@ -115,8 +115,4 @@ public class BeanModelPropertyProvider implements ModelPropertiesProvider {
             childProperty, isGetter(childProperty.getRawMember()), typeResolver, alternateTypeProvider);
   }
 
-  public void setObjectMapper(ObjectMapper objectMapper) {
-    this.objectMapper = objectMapper;
-  }
-
 }

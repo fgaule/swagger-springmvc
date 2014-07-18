@@ -1,7 +1,6 @@
 package com.mangofactory.swagger.models.property.provider;
 
 import com.fasterxml.classmate.ResolvedType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Iterables;
 import com.mangofactory.swagger.models.property.ModelProperty;
 import com.mangofactory.swagger.models.property.bean.BeanModelPropertyProvider;
@@ -40,15 +39,5 @@ public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
             .propertiesForDeserialization(type));
   }
 
-  /**
-   * TODO: This setter should not exist. Why is it used?
-   *
-   * @param objectMapper
-   */
-  public void setObjectMapper(ObjectMapper objectMapper) {
-    this.beanModelPropertyProvider.setObjectMapper(objectMapper);
-    this.fieldModelPropertyProvider.setObjectMapper(objectMapper);
-    this.constructorModelPropertyProvider.setObjectMapper(objectMapper);
-  }
 }
 

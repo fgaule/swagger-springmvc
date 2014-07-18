@@ -97,8 +97,4 @@ public class FieldModelPropertyProvider implements ModelPropertiesProvider {
             && Field.class.isAssignableFrom(member.getMember().getClass());
   }
 
-  public void setObjectMapper(ObjectMapper objectMapper) {
-    this.objectMapper = objectMapper;
-  }
-
 }
