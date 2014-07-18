@@ -24,7 +24,7 @@ import java.util.Set;
 import static com.google.common.collect.Lists.*;
 import static com.mangofactory.swagger.ScalaUtils.*;
 
-public class OperationParameterReader implements Command<RequestMappingContext> {
+public class OperationParameterReader implements RequestMappingReader {
     @Override
     public void execute(RequestMappingContext context) {
         HandlerMethod handlerMethod = context.getHandlerMethod();

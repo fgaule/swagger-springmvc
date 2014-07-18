@@ -3,7 +3,6 @@ package com.mangofactory.swagger.readers.operation;
 import com.fasterxml.classmate.ResolvedType;
 import com.mangofactory.swagger.configuration.SwaggerGlobalSettings;
 import com.mangofactory.swagger.models.ResolvedTypes;
-import com.mangofactory.swagger.readers.Command;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
@@ -21,7 +20,7 @@ import static com.google.common.collect.Lists.*;
 import static com.mangofactory.swagger.ScalaUtils.*;
 import static com.mangofactory.swagger.core.ModelUtils.*;
 
-public class OperationResponseMessageReader implements Command<RequestMappingContext> {
+public class OperationResponseMessageReader implements RequestMappingReader {
    @Override
    public void execute(RequestMappingContext context) {
       SwaggerGlobalSettings swaggerGlobalSettings = (SwaggerGlobalSettings) context.get("swaggerGlobalSettings");
