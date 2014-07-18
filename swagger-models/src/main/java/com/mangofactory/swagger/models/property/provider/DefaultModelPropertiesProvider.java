@@ -10,7 +10,7 @@ import com.mangofactory.swagger.models.property.field.FieldModelPropertyProvider
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "modelPropertiesProvider")
 public class DefaultModelPropertiesProvider implements ModelPropertiesProvider {
 
   private final FieldModelPropertyProvider fieldModelPropertyProvider;
