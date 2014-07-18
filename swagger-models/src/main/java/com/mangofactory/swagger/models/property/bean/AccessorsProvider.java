@@ -15,7 +15,7 @@ import static com.google.common.collect.Lists.*;
 import static com.mangofactory.swagger.models.Accessors.*;
 
 @Component
-class AccessorsProvider {
+public class AccessorsProvider {
 
   private TypeResolver typeResolver;
 
