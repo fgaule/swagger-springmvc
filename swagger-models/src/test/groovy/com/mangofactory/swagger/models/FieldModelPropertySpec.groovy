@@ -6,6 +6,7 @@ import com.fasterxml.classmate.members.ResolvedField
 import com.mangofactory.swagger.mixins.ModelPropertySupport
 import com.mangofactory.swagger.mixins.TypesForTestingSupport
 import com.mangofactory.swagger.models.alternates.AlternateTypeProvider
+import com.mangofactory.swagger.models.property.field.FieldModelProperty
 import com.wordnik.swagger.model.AllowableListValues
 import scala.collection.JavaConversions
 import spock.lang.Specification
