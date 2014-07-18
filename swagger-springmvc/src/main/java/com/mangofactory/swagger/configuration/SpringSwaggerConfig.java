@@ -198,7 +198,7 @@ public class SpringSwaggerConfig {
   /**
    * In case there is no ObjectMapper bean defined, we do
    */
-  @Bean
+  @Bean(name = "swaggerObjectMapper")
   public ObjectMapper springsMessageConverterObjectMapper() {
     return jacksonScalaSupport().getSpringsMessageConverterObjectMapper();
   }
