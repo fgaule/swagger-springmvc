@@ -96,8 +96,16 @@ public class SwaggerApiResourceListing {
     swaggerCache.addSwaggerResourceListing(swaggerGroup, resourceListing);
   }
 
+  public SwaggerCache getSwaggerCache() {
+    return swaggerCache;
+  }
+
   public void setApiInfo(ApiInfo apiInfo) {
     this.apiInfo = apiInfo;
+  }
+
+  public List<AuthorizationType> getAuthorizationTypes() {
+    return authorizationTypes;
   }
 
   public void setAuthorizationTypes(List<AuthorizationType> authorizationTypes) {
@@ -106,6 +114,10 @@ public class SwaggerApiResourceListing {
 
   public void setApiListingReferenceScanner(ApiListingReferenceScanner apiListingReferenceScanner) {
     this.apiListingReferenceScanner = apiListingReferenceScanner;
+  }
+
+  public SwaggerPathProvider getSwaggerPathProvider() {
+    return swaggerPathProvider;
   }
 
   public void setSwaggerPathProvider(SwaggerPathProvider swaggerPathProvider) {
