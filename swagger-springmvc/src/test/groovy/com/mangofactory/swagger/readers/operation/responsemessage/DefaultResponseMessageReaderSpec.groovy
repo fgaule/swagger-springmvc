@@ -12,7 +12,7 @@ import spock.lang.Specification
 import static com.mangofactory.swagger.ScalaUtils.fromOption
 
 @Mixin(RequestMappingSupport)
-class OperationResponseMessageReaderSpec extends Specification {
+class DefaultResponseMessageReaderSpec extends Specification {
 
    def "Should add default response messages"() {
     given:
@@ -25,7 +25,7 @@ class OperationResponseMessageReaderSpec extends Specification {
       context.put("swaggerGlobalSettings", swaggerGlobalSettings)
       context.put("currentHttpMethod", currentHttpMethod)
     when:
-      OperationResponseMessageReader operationResponseMessageReader = new OperationResponseMessageReader()
+      DefaultResponseMessageReader operationResponseMessageReader = new DefaultResponseMessageReader()
       operationResponseMessageReader.execute(context)
       Map<String, Object> result = context.getResult()
 
@@ -48,7 +48,7 @@ class OperationResponseMessageReaderSpec extends Specification {
       context.put("swaggerGlobalSettings", swaggerGlobalSettings)
       context.put("currentHttpMethod", RequestMethod.GET)
     when:
-      OperationResponseMessageReader operationResponseMessageReader = new OperationResponseMessageReader()
+      DefaultResponseMessageReader operationResponseMessageReader = new DefaultResponseMessageReader()
       operationResponseMessageReader.execute(context)
       Map<String, Object> result = context.getResult()
 
@@ -70,7 +70,7 @@ class OperationResponseMessageReaderSpec extends Specification {
       context.put("swaggerGlobalSettings", swaggerGlobalSettings)
       context.put("currentHttpMethod", RequestMethod.GET)
     when:
-      OperationResponseMessageReader operationResponseMessageReader = new OperationResponseMessageReader()
+      DefaultResponseMessageReader operationResponseMessageReader = new DefaultResponseMessageReader()
       operationResponseMessageReader.execute(context)
       Map<String, Object> result = context.getResult()
       ResponseMessage responseMessage =  result['responseMessages'].find{ it.code == 200 }

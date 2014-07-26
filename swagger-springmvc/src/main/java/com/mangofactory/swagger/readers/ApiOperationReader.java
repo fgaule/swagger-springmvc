@@ -15,7 +15,7 @@ import com.mangofactory.swagger.readers.operation.notes.OperationNotesReader;
 import com.mangofactory.swagger.readers.operation.parameter.OperationParameterReader;
 import com.mangofactory.swagger.readers.operation.position.OperationPositionReader;
 import com.mangofactory.swagger.readers.operation.OperationResponseClassReader;
-import com.mangofactory.swagger.readers.operation.responsemessage.OperationResponseMessageReader;
+import com.mangofactory.swagger.readers.operation.responsemessage.DefaultResponseMessageReader;
 import com.mangofactory.swagger.readers.operation.summary.OperationSummaryReader;
 import com.mangofactory.swagger.readers.operation.RequestMappingReader;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
@@ -79,7 +79,7 @@ public class ApiOperationReader implements Command<RequestMappingContext> {
     commandList.add(new OperationImplicitParameterReader());
     commandList.add(new OperationParameterRequestConditionReader());
     commandList.add(new MediaTypeReader());
-    commandList.add(new OperationResponseMessageReader());
+    commandList.add(new DefaultResponseMessageReader());
     commandList.add(new OperationDeprecatedReader());
     commandList.addAll(customAnnotationReader);
     Integer currentCount = 0;

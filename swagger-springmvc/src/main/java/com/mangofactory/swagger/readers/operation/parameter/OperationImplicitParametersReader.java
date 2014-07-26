@@ -1,7 +1,6 @@
 package com.mangofactory.swagger.readers.operation.parameter;
 
 import com.google.common.collect.Lists;
-import com.mangofactory.swagger.readers.operation.SwaggerParameterReader;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
 import com.wordnik.swagger.annotations.ApiImplicitParam;
 import com.wordnik.swagger.annotations.ApiImplicitParams;

@@ -174,8 +174,8 @@
     </dependencyManagement>
     <distributionManagement>
         <snapshotRepository>
-            <id>sonatype-snapshot</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>snapshots</id>
+            <url>http://vmtilcara.servers.despegar.it:8080/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>sonatype-release</id>

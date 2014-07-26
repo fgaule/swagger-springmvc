@@ -1,5 +1,6 @@
-package com.mangofactory.swagger.readers.operation;
+package com.mangofactory.swagger.readers.operation.parameter;
 
+import com.mangofactory.swagger.readers.operation.RequestMappingReader;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
 import com.wordnik.swagger.model.Parameter;
 
